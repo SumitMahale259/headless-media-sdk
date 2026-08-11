@@ -17,21 +17,16 @@ export function useMediaEventListener<K extends MediaEventName>(
 
 export interface UseMediaEventsResult {
   trackView: (item: MediaItem, source?: string) => void;
-  trackDownload: (item: MediaItem, quality?: string) => void;
 }
 
 /**
  * The "emit" half of the events API — components call these when a user
- * views or downloads something, without reaching into media-core directly.
+ * views something, without reaching into media-core directly.
  */
 export function useMediaEvents(): UseMediaEventsResult {
   const client = useMediaCore();
 
   const trackView = useCallback((item: MediaItem, source?: string) => client.trackView(item, source), [client]);
-  const trackDownload = useCallback(
-    (item: MediaItem, quality?: string) => client.trackDownload(item, quality),
-    [client]
-  );
 
-  return { trackView, trackDownload };
+  return { trackView };
 }

@@ -4,7 +4,7 @@ import { useMediaEventListener } from "media-react";
 /**
  * Demonstrates the requirement that "the app can also subscribe
  * independently to track activity" — this component doesn't trigger any
- * view/download events itself, it only observes the shared stream that
+ * view event itself, it only observes the shared stream that
  * PhotoBrowser/VideoReels emit into, same as the SDK's own default console
  * listener does.
  */
@@ -14,7 +14,6 @@ export function EventLog() {
   const append = (line: string) => setLog((prev) => [line, ...prev].slice(0, 8));
 
   useMediaEventListener("view", (p) => append(`view · #${p.item.id} · ${p.source ?? "unknown"}`));
-  useMediaEventListener("download", (p) => append(`download · #${p.item.id} · ${p.quality ?? ""}`));
 
   if (log.length === 0) return null;
 

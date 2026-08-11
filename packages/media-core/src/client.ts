@@ -96,7 +96,6 @@ export class MediaCoreClient {
 
     if (config.enableDefaultLogging !== false) {
       this.emitter.on("view", (p) => console.log(`[media-core] view`, p.item.id, p.source ?? ""));
-      this.emitter.on("download", (p) => console.log(`[media-core] download`, p.item.id, p.quality ?? ""));
     }
   }
 
@@ -112,10 +111,6 @@ export class MediaCoreClient {
 
   trackView(item: MediaItem, source?: string): void {
     this.emitter.emit("view", { item, source, timestamp: Date.now() });
-  }
-
-  trackDownload(item: MediaItem, quality?: string): void {
-    this.emitter.emit("download", { item, quality, timestamp: Date.now() });
   }
 
   // -- requests ---------------------------------------------------------------

@@ -89,7 +89,7 @@ export interface MediaCoreConfig {
   cacheTtlMs?: number;
   /** Injectable fetch for non-browser environments / tests. Defaults to global fetch. */
   fetchImpl?: typeof fetch;
-  /** Registers a console.log listener for "view"/"download" on construction. Default true. */
+  /** Registers a console.log listener for "view" on construction. Default true. */
   enableDefaultLogging?: boolean;
 }
 
@@ -126,11 +126,10 @@ export class MediaError extends Error {
  * app — analytics, app-level state, a debug console listener — can react to
  * the same activity stream without each caller having to fan out manually.
  */
-export type MediaEventName = "view" | "download";
+export type MediaEventName = "view";
 
 export interface MediaEventPayload {
   view: { item: MediaItem; source?: string; timestamp: number };
-  download: { item: MediaItem; quality?: string; timestamp: number };
 }
 
 export type MediaEventListener<K extends MediaEventName> = (

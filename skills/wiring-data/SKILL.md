@@ -72,21 +72,18 @@ if (feed.error) {
 `.message` strings are for logs/debugging, not branching logic — they can
 change without it being a breaking change; `.code` is the stable contract.
 
-## Tracking activity (view / download events)
+## Tracking activity (view event)
 
-Every `MediaItem` a user opens or downloads should go through `trackView`/
-`trackDownload` — this is what feeds the shared event stream (console logger
+Every `MediaItem` a user opens should go through `trackView` — this is what feeds the shared event stream (console logger
 by default, plus anything else subscribed via `useMediaEventListener`).
 
 ```tsx
 import { useMediaEvents } from "media-react";
 
-const { trackView, trackDownload } = useMediaEvents();
+const { trackView } = useMediaEvents();
 
 // when a lightbox opens on an item:
 trackView(item, "lightbox");
-// when a user actually downloads/saves:
-trackDownload(item, "large2x");
 ```
 
 Do NOT call `client.trackView` directly by pulling `useMediaCore()` unless
@@ -108,4 +105,4 @@ useMediaEventListener("view", (payload) => {
 - ❌ `import { MediaCoreClient } from "media-core"` inside `apps/web-app` — go through `media-react` hooks.
 - ❌ Calling `useSearch` and `useCuratedFeed` in the same component and merging results — pick one based on query state.
 - ❌ Passing raw Pexels API JSON shapes around — always use the mapped `PexelsPhoto`/`PexelsVideo` types re-exported from `media-react`.
-- ❌ Skipping `trackView`/`trackDownload` when wiring a new place users can open/save media — every new surface should call these, that's the whole point of the event pattern.
+- ❌ Skipping `trackView` when wiring a new place users can open/save media — every new surface should call these, that's the whole point of the event pattern.

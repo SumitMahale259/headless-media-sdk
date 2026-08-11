@@ -71,7 +71,7 @@ npm run build        # production build of web-app
   promise sharing so two callers asking for the same page while a fetch is
   pending get one network call, not two (this also quietly fixes React
   StrictMode's double-invoke of effects in dev).
-- **Events**: `view`/`download` are not fetched from Pexels — they're
+- **Events**: `view` is not fetched from Pexels — they're
   triggered explicitly (`client.trackView(item)`) so every layer (a debug
   console listener registered by default in `media-core`, plus anything
   `media-react`'s `useMediaEventListener` subscribes) reacts to one shared
