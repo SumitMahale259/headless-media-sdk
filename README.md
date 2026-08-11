@@ -48,8 +48,6 @@ so each layer can only see the layer directly below it.
 
 ```bash
 npm install
-cp apps/web-app/.env.example apps/web-app/.env
-# put a free key from https://www.pexels.com/api/ into apps/web-app/.env
 npm run dev
 ```
 
@@ -136,16 +134,6 @@ tree, to open a Lightbox that lives elsewhere — see the doc comment in
   cache expiry and invalidation, request cancellation, pagination edge
   cases, and event subscription cleanup. A small mocked-Pexels integration
   suite would verify the client contract without relying on a live API key.
-- **Improve delivery and documentation.** Publish generated TypeDoc sites,
-  add an interactive component playground with accessibility examples, and
-  automate typecheck, lint, tests, and builds in CI. I would also publish
-  versioned package artifacts so the SDK and UI library can be consumed
-  outside this monorepo.
-- **Validate with real consumers.** Use the two skill documents on a fresh
-  UI feature, capture the resulting AI-assisted diff and review notes, and
-  refine the skills where they fail to prevent an architectural mistake.
-  That would turn the current checklist-style guidance into evidence that
-  it reliably steers implementation work.
 
 ## Skill docs
 
