@@ -1,0 +1,21 @@
+{
+  "name": "media-react",
+  "version": "0.1.0",
+  "private": true,
+  "description": "React wrapper (provider + hooks) around media-core. No business logic — adaptation only.",
+  "main": "src/index.ts",
+  "types": "src/index.ts",
+  "scripts": {
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "media-core": "*"
+  },
+  "peerDependencies": {
+    "react": ">=18"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.0",
+    "typescript": "^5.5.0"
+  }
+}
