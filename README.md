@@ -119,12 +119,33 @@ tree, to open a Lightbox that lives elsewhere — see the doc comment in
   target (GitHub Pages / Vercel per package) is mechanical from here but
   I didn't spend the time budget on hosting config.
 
-## AI-assisted vs hand-written
+## With more time
 
-_Fill this in with what actually happened when you build on top of this —
-which files you generated vs hand-edited, and how you used the two skill
-docs while extending `apps/web-app`. The task explicitly wants this section
-plus a link to the chat transcript(s) used._
+- **Complete the native deliverables.** Implement `media-native` with the
+  same provider and hook contract as `media-react`, then build
+  `media-ui-native` versions of the Grid, Lightbox, and Reel Swiper using
+  React Native's accessibility and gesture primitives. I would add shared
+  contract tests to ensure the web and native wrappers stay behaviorally
+  aligned without coupling either UI library to the core.
+- **Make the media experience more complete.** Add video playback to the
+  Lightbox, better loading placeholders, retry controls for failed pages,
+  and image/video preloading around the current Grid or Reel item. I would
+  also preserve search and pagination state in the URL so a result view is
+  linkable and survives a refresh.
+- **Harden the SDK.** Add a broader test suite around API error mapping,
+  cache expiry and invalidation, request cancellation, pagination edge
+  cases, and event subscription cleanup. A small mocked-Pexels integration
+  suite would verify the client contract without relying on a live API key.
+- **Improve delivery and documentation.** Publish generated TypeDoc sites,
+  add an interactive component playground with accessibility examples, and
+  automate typecheck, lint, tests, and builds in CI. I would also publish
+  versioned package artifacts so the SDK and UI library can be consumed
+  outside this monorepo.
+- **Validate with real consumers.** Use the two skill documents on a fresh
+  UI feature, capture the resulting AI-assisted diff and review notes, and
+  refine the skills where they fail to prevent an architectural mistake.
+  That would turn the current checklist-style guidance into evidence that
+  it reliably steers implementation work.
 
 ## Skill docs
 
